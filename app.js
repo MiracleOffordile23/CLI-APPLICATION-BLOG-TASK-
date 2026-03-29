@@ -56,8 +56,8 @@ const blogMenu = () => {
         My Blog CLI
         1. Create a new Blog Post
         2. View all Blog Posts
-        3. Edit a Blog Post
-        4. Delete a Blog Post
+        3. Delete a Blog Post
+        4. Edit a Blog Post
         5. Exit
         `);
   rl.question(
@@ -101,7 +101,7 @@ const viewBlogPost = () => {
 const editBlogPost = () => {
   if (blogPosts.length === 0) {
     console.log(
-      "\nAlert: Sorry, there's no Post to edit. Kindly select a Post.",
+      "\nAlert: Sorry, there is no Post to edit. Kindly select a Post.",
     );
     return blogMenu();
   }
@@ -124,10 +124,10 @@ const editBlogPost = () => {
         console.log(`Current Content: ${post.content}`);
 
         rl.question(
-          "Please enter new title (leave blank if you want to keep the current title): ",
+          "Please enter a new title (leave it blank if you want to keep your current title): ",
           (newTitle) => {
             rl.question(
-              "Please enter new content (leave blank if you want to keep the current content): ",
+              "Please enter a new content (leave blank if you want to keep your current content): ",
               (newContent) => {
                 blogPosts[index] = {
                   ...post,
@@ -152,7 +152,7 @@ const editBlogPost = () => {
 const deleteBlogPost = () => {
   if (blogPosts.length === 0) {
     console.log(
-      "\nAlert: Ooops! There's no Blog Post to delete. Please enter a Blog Post number to delete.",
+      "\nAlert: Ooops! There is no Blog Post to delete. Please enter a Blog Post number to delete .",
     );
     return blogMenu();
   }
@@ -160,17 +160,17 @@ const deleteBlogPost = () => {
     const index = parseInt(number, 10) - 1;
     if (isNaN(index)) {
       console.log(
-        "\nAlert: Invalid input. Please enter a valid Post number.",
+        "\nAlert: Invalid input !!. Please enter a valid Post number.",
       );
       return editBlogPost();
     }
     if (index >= 0 && index < blogPosts.length) {
       blogPosts.splice(index, 1);
       saveMyPosts(blogPosts);
-      console.log("\nAlert: Post has been deleted successfully!");
+      console.log("\nAlert: Post has been deleted successfully. Thanks!");
     } else {
       console.log(
-        "\nAlert: The Post number is invalid. Please enter a valid Post number.",
+        "\nAlert: The Post number is invalid. Please enter a valid Post number here.",
       );
     }
     blogMenu();
